@@ -8,9 +8,14 @@ import cv2
 import random
 from tqdm import tqdm
 
+import sys
+
+print('Number of arguments:', len(sys.argv), 'arguments.')
+print('Argument List:', str(sys.argv))
+
 model, epoch = MyKeras.load_latest_model('models/main')
 
-vidcap = cv2.VideoCapture('video/1.mp4')
+vidcap = cv2.VideoCapture(sys.argv[1])#'video/1.mp4')
 total = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
 
 fourcc = cv2.VideoWriter_fourcc(*'DIVX')
@@ -39,3 +44,4 @@ for i in tqdm(range(0, total)):
 
         success, image = vidcap.read()
 
+cv2.waitKey(0)
