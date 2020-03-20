@@ -13,8 +13,8 @@ model, epoch = MyKeras.load_latest_model('models/main')
 vidcap = cv2.VideoCapture('video/1.mp4')
 total = int(vidcap.get(cv2.CAP_PROP_FRAME_COUNT))
 
-fourcc = cv2.VideoWriter_fourcc(*'DIVX')
-out = cv2.VideoWriter('video/out.mp4', fourcc, 60, (1280, 720))
+fourcc = cv2.VideoWriter_fourcc(*'MPEG')
+out = cv2.VideoWriter('video/out.avi', fourcc, 24, (512, 288))#(1280, 720))
 
 success, image = vidcap.read()
 for i in tqdm(range(0, total)):
